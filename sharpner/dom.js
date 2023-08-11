@@ -37,11 +37,31 @@
 
 // }
 
-var li= document.getElementsByTagName('li');
-console.log(li);
+// var li= document.getElementsByTagName('li');
+// console.log(li);
 
-for(var i=0;i<li.length;i++){
-    li[i].style.fontWeight='bold';
-    li[i].style.backgroundColor='lightgrey';
-}
+// for(var i=0;i<li.length;i++){
+//     li[i].style.fontWeight='bold';
+//     li[i].style.backgroundColor='lightgrey';
+// }
 
+//Ouery Selector//
+var header = document.querySelector('#main-header');
+header.style.borderBottom = 'solid 4px #ccc';
+
+var input = document.querySelector('input');
+input.value = 'Hello World';
+
+var submit = document.querySelector('input[type="submit"]');
+submit.value = "SEND"
+
+var item = document.querySelector('.list-group-item');
+item.style.color = 'red';
+
+
+
+var secondItem = document.querySelector('.list-group-item:nth-child(2)');
+secondItem.style.color = 'green';
+
+var thirdItem = document.querySelector('.list-group-item:nth-child(3)');
+thirdItem.style.display = 'none';
