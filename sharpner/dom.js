@@ -1,178 +1,56 @@
-//EXAMINE THE DOCUMENT OBJECT //
-
-//console.dir(document);
-// console.log(document.domain);
-// console.log(document.URL);
-// console.log(document.title);
-// //document.title = 123;
-// console.log(document.doctype);
-// console.log(document.head);
-// console.log(document.body);
-// console.log(document.all);
-// console.log(document.all[10]);
-// document.all[10]
-
-// var headerTitle = (document.getElementById('header-title'));
-// var header=document.getElementById('main-header');
-// // //headerTitle.innerHTML = '<h3>Hello</h3>';
-//  headerTitle.style.borderBottom ='solid 3px #000 ';
-//  var title = document.getElementById('title');
-//  title.style.color ='green';
-//  title.style.fontWeight='900';
-//  items[1].textContext='Hello 2';
-//  items[1].style.fontWeight='bold';
-//  items[1].style.backgrpund='yellow';
-
-//  items.style.backgroundColor = '#f4f4f4';
-
-// var items = document.getElementsByClassName('list-group-item');
-// console.log(items);
-
-// items[2].style.background = 'green';
-// // Gives Error
-// // items.style.background =  '#f4f4f4';
-
-// for(var i=0;i<items.length;i++){
-//     items[i].style.fontWeight = 'bold';
-
-// }
-
-// var li= document.getElementsByTagName('li');
-// console.log(li);
-
-// for(var i=0;i<li.length;i++){
-//     li[i].style.fontWeight='bold';
-//     li[i].style.backgroundColor='lightgrey';
-// }
-
-//Ouery Selector//
-// var header = document.querySelector('#main-header');
-// header.style.borderBottom = 'solid 4px #ccc';
-
-// var input = document.querySelector('input');
-// input.value = 'Hello World';
-
-// var submit = document.querySelector('input[type="submit"]');
-// submit.value = "SEND"
-
-// var item = document.querySelector('.list-group-item');
-// item.style.color = 'red';
+var form =  document.getElementById('addForm');
+var itemList = document.getElementById('items');
 
 
+//Form submit event
+form.addEventListener('submit', addItem);
+//Delete event
+itemList.addEventListener('click' ,removeItem);
 
-// var secondItem = document.querySelector('.list-group-item:nth-child(2)');
-// secondItem.style.color = 'green';
+//add item
+function addItem(e){
+    e.preventDefault();
 
-// var thirdItem = document.querySelector('.list-group-item:nth-child(3)');
-// thirdItem.style.display = 'none';
+   // Get input value
+   var newItem = document.getElementById('item').value;
 
-// var secondItem = document.querySelector('.list-group-item:nth-child(2)');
-// secondItem.style.fontWeight='bold';
-// secondItem.style.color = 'green';
+   // Create new li element
+   var li = document.createElement('li');
+   //add Class
+   li.className = 'list-group-item';
+   //console.log(li);
+   // Add text Node with input value
+   li.appendChild(document.createTextNode(newItem));
 
-// var oddItems = document.querySelectorAll('.list-group-item:nth-child(odd)');
-// for(let i=0;i<oddItems.length;i++){
-//     oddItems[i].style.backgroundColor='lightgreen';
-// }
+    //Create del button
+    var deleteBtn = document.createElement('button');
 
-//Traversing the DOM//
-var itemList = document.querySelector('#items');
-//parentNode
-//console.log(itemList.parentNode);
-//itemList.parentNode.style.background='#f4f4f4';
-//console.log(itemList.parentNode.parentNode);
-//console.log(itemList.parentNode.parentNode.parentNode);
+    //add clases to delete button
+    deleteBtn.className='btn btn-danger btn-sm float-right delete';
+    //append text node
+    deleteBtn.appendChild(document.createTextNode('X'));
 
-//parentElement
-// console.log(itemList.parentElement);
-//itemList.parentElement.style.background='#f4f4f4';
-// console.log(itemList.parentElement.parentElement.parentElement);
+    //Append button to li
+    li.appendChild(deleteBtn);
+    //Edit Button
+    var editBtn = document.createElement('button');
+    editBtn.className='btn btn-sm float-right Edit';
+    editBtn.appendChild(document.createTextNode('Edit'));
+    li.appendChild(editBtn);
+    
 
-//childNodes
-// console.log(itemList.childNodes);
-
-// console.log(itemsList.children);
-// console.log(itemList.children[1]);
-// itemList.children[1].computedStyleMap.backgroundColor = 'yellow';
-
-//FirstChild
-
-// console.log(itemList.firstChild);
-//firstElementChild
-//console.log(itemList.firstElementChild);
- itemList.firstElementChild.textContent = 'Hello ';
-
-//lastChild
-//console.log(itemList.lastChild);
-//console.log(itemList.lastElementChild);
-itemList.lastElementChild.textContent = 'Hello 4';
-
-//nextSiblings
-// console.log(itemList.nextSibling);
-//nextElelmentSibling
-// console.log(itemList.nextElementSibling);
-
-// previousSibling
-//console.log(itemList.previousSibling);
-//previousElementSibling
-// console.log(itemList.previousElementSiblings);
-// itemList.previousElementSibling.stylecolor = 'green';
-
-//createElement
-
-//create a Div
-var newDiv = document.createElement('div');
-
-newDiv.className = 'hello';
-
-//Add id
-newDiv.id = 'hello1';
-
-//Add attr
-newDiv.setAttribute('title','Hello Div');
-
-//Create a text node
-var newDivText = document.createTextNode('Hello World');
-
-//Add Text to div
-newDiv.appendChild(newDivText);
-
-var container = document.querySelector('header .container');
-var h1 = document.querySelector('header h1');
-
- console.log(newDiv);
-
- newDiv.style.fontSize = '30px' ;
-
- container.insertBefore(newDiv, h1);
-
- //Adding Hello World Before Item 1
-
- var nDiv = document.createElement('div');
-
-newDiv.className = 'hello1';
-
-//Add id
-//nDiv.id = 'hello1';
-
-//Add attr
-nDiv.setAttribute('title','Hello Div1');
-
-//Create a text node
-var nDivText = document.createTextNode('Hello World');
-
-//Add Text to div
-nDiv.appendChild(nDivText);
-
-var container1 = document.querySelector('#items');
-var h2 = document.querySelector('.list-group-item');
-
- console.log(nDiv);
-
- newDiv.style.fontSize = '10px' ;
-
- container1.insertBefore(nDiv, h2);
-
+//Append li to item
+   itemList.appendChild(li);
+}
+//Remove Item
+function removeItem(e){
+    if(e.target.classList.contains('delete')){
+        if(confirm('Are You Sure?')){
+            var li = e.target.parentElement;
+            itemList.removeChild(li);
+        }
+    }
+}
 
 
 
