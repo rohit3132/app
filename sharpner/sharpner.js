@@ -62,7 +62,19 @@ function onSubmit(e){
     } else {
         const li = document.createElement('li');
         li.appendChild(document.createTextNode(`${nameInput.value} : ${emailInput.value}`));
+        let myObj = {
+            name:"Domenic",        
+            age: 56
+        }; 
+
+        let myObj_serialized=JSON.stringify(myObj);
+       
+
+        localStorage.setItem("myoBj", myObj_serialized);
         
+        let muObj_deserialized = JSON.parse(localStorage.getItem("myObj"));
+        
+
         localStorage.setItem('userName',nameInput.value);
         localStorage.setItem('userEmail',emailInput.value);
 
